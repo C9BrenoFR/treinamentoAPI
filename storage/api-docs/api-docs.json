@@ -1,0 +1,53 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Treinamento API",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/identities": {
+            "get": {
+                "tags": [
+                    "Identity"
+                ],
+                "summary": "Get all identities",
+                "operationId": "108ba24d021f7592fcb3f660d2786c94",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "title": {
+                                                "type": "string",
+                                                "example": "Example Title"
+                                            },
+                                            "text": {
+                                                "type": "string",
+                                                "example": "Example text for the identidade."
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Identity",
+            "description": "Identity"
+        }
+    ]
+}
