@@ -42,12 +42,514 @@
                     }
                 }
             }
+        },
+        "/paulo/creditCard": {
+            "post": {
+                "tags": [
+                    "Paulo"
+                ],
+                "summary": "Criar um novo cartão de crédito",
+                "description": "Cria um novo cartão de crédito para um usuário",
+                "operationId": "9f11073cb9e9b020f7440e905214a50f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "number",
+                                    "brand",
+                                    "is_credit",
+                                    "user_id"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Cartão Principal"
+                                    },
+                                    "number": {
+                                        "type": "string",
+                                        "example": "1234-5678-9012-3456"
+                                    },
+                                    "brand": {
+                                        "type": "string",
+                                        "example": "Visa"
+                                    },
+                                    "is_credit": {
+                                        "type": "boolean",
+                                        "example": true
+                                    },
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Cartão de crédito criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "schemas/PauloCreditCard"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dados inválidos"
+                    }
+                }
+            }
+        },
+        "/paulo/creditCard/{id}": {
+            "put": {
+                "tags": [
+                    "Paulo"
+                ],
+                "summary": "Atualizar cartão de crédito",
+                "description": "Atualiza as informações de um cartão de crédito existente",
+                "operationId": "b2826601d66cccf70320d836dcf2aa41",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do cartão de crédito",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "number",
+                                    "brand",
+                                    "is_credit",
+                                    "user_id"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Cartão Principal"
+                                    },
+                                    "number": {
+                                        "type": "string",
+                                        "example": "1234-5678-9012-3456"
+                                    },
+                                    "brand": {
+                                        "type": "string",
+                                        "example": "Visa"
+                                    },
+                                    "is_credit": {
+                                        "type": "boolean",
+                                        "example": true
+                                    },
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Cartão de crédito atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "schemas/PauloCreditCard"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dados inválidos"
+                    },
+                    "404": {
+                        "description": "Cartão de crédito não encontrado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Paulo"
+                ],
+                "summary": "Deletar cartão de crédito",
+                "description": "Deleta um cartão de crédito existente",
+                "operationId": "9baceabb684e3cb7fe7dbf646f8374b3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do cartão de crédito",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cartão de crédito deletado com sucesso"
+                    },
+                    "404": {
+                        "description": "Cartão de crédito não encontrado"
+                    }
+                }
+            }
+        },
+        "/paulo/user": {
+            "post": {
+                "tags": [
+                    "Paulo"
+                ],
+                "summary": "Criar um novo usuário",
+                "description": "Cria um novo usuário com as informações fornecidas",
+                "operationId": "5baa630badfee5083b5229ca7e872ca3",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "phone_number",
+                                    "birth_date",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Paulo Silva"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "paulo@exemplo.com"
+                                    },
+                                    "phone_number": {
+                                        "type": "string",
+                                        "example": "(11) 98765-4321"
+                                    },
+                                    "birth_date": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "1980-05-23"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "password123"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Usuário criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "schemas/PauloUser"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dados inválidos"
+                    }
+                }
+            }
+        },
+        "/paulo/user/{id}": {
+            "get": {
+                "tags": [
+                    "Paulo"
+                ],
+                "summary": "Buscar usuário por ID",
+                "description": "Retorna os detalhes de um usuário e seus cartões de crédito",
+                "operationId": "1b5acdc6d3bdc3c9cd48b25633dd2fff",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuário encontrado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "schemas/PauloUserWithCards"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Paulo"
+                ],
+                "summary": "Atualizar usuário",
+                "description": "Atualiza as informações de um usuário existente",
+                "operationId": "2f741c448cefc85b2b76ed5386e9e884",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "phone_number",
+                                    "birth_date"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Paulo Silva"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "paulo@exemplo.com"
+                                    },
+                                    "phone_number": {
+                                        "type": "string",
+                                        "example": "(11) 98765-4321"
+                                    },
+                                    "birth_date": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "1980-05-23"
+                                    },
+                                    "password": {
+                                        "description": "Opcional, só enviar se for atualizar",
+                                        "type": "string",
+                                        "example": "password123"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuário atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "schemas/PauloUser"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dados inválidos"
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Paulo"
+                ],
+                "summary": "Deletar usuário",
+                "description": "Deleta um usuário existente e seus cartões de crédito",
+                "operationId": "7683c0b3b744395a74274999d0e91845",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuário deletado com sucesso"
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "PauloUser": {
+                "title": "Usuário Paulo",
+                "required": [
+                    "name",
+                    "email",
+                    "phone_number",
+                    "birth_date",
+                    "password"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "ID do usuário",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "Nome do usuário",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "Email do usuário",
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "phone_number": {
+                        "description": "Número de telefone do usuário",
+                        "type": "string"
+                    },
+                    "birth_date": {
+                        "description": "Data de nascimento do usuário",
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "balance": {
+                        "description": "Saldo do usuário",
+                        "type": "number",
+                        "format": "double",
+                        "example": 0
+                    },
+                    "created_at": {
+                        "description": "Data de criação",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Data de atualização",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "PauloCreditCard": {
+                "title": "Cartão de Crédito Paulo",
+                "required": [
+                    "name",
+                    "number",
+                    "brand",
+                    "is_credit",
+                    "user_id"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "ID do cartão de crédito",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "Nome do cartão de crédito",
+                        "type": "string"
+                    },
+                    "number": {
+                        "description": "Número do cartão de crédito",
+                        "type": "string"
+                    },
+                    "brand": {
+                        "description": "Bandeira do cartão",
+                        "type": "string"
+                    },
+                    "is_credit": {
+                        "description": "Indica se é um cartão de crédito",
+                        "type": "boolean"
+                    },
+                    "user_id": {
+                        "description": "ID do usuário associado",
+                        "type": "integer"
+                    },
+                    "created_at": {
+                        "description": "Data de criação",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Data de atualização",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "PauloUserWithCards": {
+                "title": "Usuário Paulo com Cartões",
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "schemas/PauloUser"
+                    },
+                    {
+                        "properties": {
+                            "credit_cards": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "schemas/PauloCreditCard"
+                                }
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
+            }
         }
     },
     "tags": [
         {
             "name": "Identity",
             "description": "Identity"
+        },
+        {
+            "name": "Paulo",
+            "description": "Paulo"
         }
     ]
 }
