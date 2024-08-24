@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\ArturBarberShopController;
+use App\Http\Controllers\Api\ArturProductController;
+use App\Http\Controllers\Api\ArturUserController;
 use App\Http\Controllers\Api\DuTrainingController;
 use App\Http\Controllers\Api\DuUserController;
 use App\Http\Controllers\Api\IdentityController;
@@ -36,3 +39,19 @@ Route::get('/du/user/{id}', [DuUserController::class, 'show']);
 Route::post('/du/training', [DuTrainingController::class, 'store']);
 Route::put('/du/training/{id}', [DuTrainingController::class, 'update']);
 Route::delete('/du/training/{id}', [DuTrainingController::class, 'destroy']);
+
+//Rotas de api do Artur
+Route::post('/artur/user', [ArturUserController::class, 'store']);
+Route::put('/artur/user/{id}', [ArturUserController::class, 'update']);
+Route::delete('/artur/user/{id}', [ArturUserController::class, 'destroy']);
+Route::get('/artur/user/{id}', [ArturUserController::class, 'show']);
+
+Route::post('/artur/barberShop', [ArturBarberShopController::class, 'store']);
+Route::put('/artur/barberShop/{id}', [ArturBarberShopController::class, 'update']);
+Route::delete('/artur/barberShop/{id}', [ArturBarberShopController::class, 'destroy']);
+Route::get('/artur/barberShop/{id}', [ArturBarberShopController::class, 'show']);
+
+Route::post('/artur/product', [ArturProductController::class, 'store']);
+Route::put('/artur/product/{id}', [ArturProductController::class, 'update']);
+Route::delete('/artur/product/{id}', [ArturProductController::class, 'destroy']);
+
