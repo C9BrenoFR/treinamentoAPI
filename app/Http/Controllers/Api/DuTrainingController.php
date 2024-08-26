@@ -10,6 +10,40 @@ use Illuminate\Http\Request;
 
 class DuTrainingController extends Controller
 {
+
+/**
+ * @OA\Post(
+ *     path="api/du/training",
+ *     summary="Criar um novo treino",
+ *     description="Cria um novo treino para um usuário.",
+ *     tags={"Lucas Du"},
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             required={"type", "weight", "repetitions", "time", "du_user_id"},
+ *             @OA\Property(property="type", type="string", example="Musculação"),
+ *             @OA\Property(property="weight", type="string", example="50kg"),
+ *             @OA\Property(property="repetitions", type="string", example="3x12"),
+ *             @OA\Property(property="time", type="string", example="45 minutos"),
+ *             @OA\Property(property="du_user_id", type="integer", example=1)
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Treino criado com sucesso",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="training", ref="schemas/DuTraining"),
+ *             @OA\Property(property="message", type="string", example="Treino criado com sucesso"),
+ *             @OA\Property(property="status", type="integer", example=200)
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=400,
+ *         description="Dados inválidos"
+ *     )
+ * )
+ */
+
     public function store(Request $request){
         $request->validate([
             'type' => 'required',
@@ -33,6 +67,46 @@ class DuTrainingController extends Controller
             'status' => 200,
         ]);
     }
+
+    /**
+ * @OA\Put(
+ *     path="api/du/training/{id}",
+ *     summary="Atualizar um treino existente",
+ *     description="Atualiza as informações de um treino existente.",
+ *     tags={"Lucas Du"},
+ *     @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         description="ID do treino",
+ *         required=true,
+ *         @OA\Schema(type="integer")
+ *     ),
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             required={"type", "weight", "repetitions", "time", "du_user_id"},
+ *             @OA\Property(property="type", type="string", example="Musculação"),
+ *             @OA\Property(property="weight", type="string", example="55kg"),
+ *             @OA\Property(property="repetitions", type="string", example="3x10"),
+ *             @OA\Property(property="time", type="string", example="50 minutos"),
+ *             @OA\Property(property="du_user_id", type="integer", example=1)
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Treino atualizado com sucesso",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="training", ref="schemas/DuTraining"),
+ *             @OA\Property(property="message", type="string", example="Treino atualizado com sucesso"),
+ *             @OA\Property(property="status", type="integer", example=200)
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=404,
+ *         description="Treino não encontrado"
+ *     )
+ * )
+ */
 
     public function update(Request $request, $id){
         $request->validate([
@@ -65,6 +139,34 @@ class DuTrainingController extends Controller
             'status' => 200,
         ]);
     }
+
+/**
+ * @OA\Delete(
+ *     path="api/du/training/{id}",
+ *     summary="Deletar um treino",
+ *     description="Deleta um treino existente.",
+ *     tags={"Lucas Du"},
+ *     @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         description="ID do treino",
+ *         required=true,
+ *         @OA\Schema(type="integer")
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Treino deletado com sucesso",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="message", type="string", example="Treino deletado com sucesso"),
+ *             @OA\Property(property="status", type="integer", example=200)
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=404,
+ *         description="Treino não encontrado"
+ *     )
+ * )
+ */
 
     public function destroy($id){
         $duTraining = DuTraining::find($id);

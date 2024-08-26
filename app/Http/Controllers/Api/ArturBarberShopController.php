@@ -9,6 +9,43 @@ use Illuminate\Http\Request;
 
 class ArturBarberShopController extends Controller
 {
+
+    /**
+ * @OA\Post(
+ *     path="api/artur/barberShop",
+ *     operationId="createBarberShop",
+ *     tags={"Artur"},
+ *     summary="Cria um novo Barber Shop",
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             required={"name","descripition","advantages","contact"},
+ *             @OA\Property(property="name", type="string", example="Barber Shop A"),
+ *             @OA\Property(property="descripition", type="string", example="Melhor Barber Shop da cidade"),
+ *             @OA\Property(property="advantages", type="string", example="Preços acessíveis, ambiente agradável"),
+ *             @OA\Property(property="contact", type="string", example="1234-5678"),
+ *         ),
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Barber Shop criado com sucesso",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="barberShop", type="object",
+ *                 @OA\Property(property="id", type="integer", example=1),
+ *                 @OA\Property(property="name", type="string", example="Barber Shop A"),
+ *                 @OA\Property(property="descripition", type="string", example="Melhor Barber Shop da cidade"),
+ *                 @OA\Property(property="advantages", type="string", example="Preços acessíveis, ambiente agradável"),
+ *                 @OA\Property(property="contact", type="string", example="1234-5678"),
+ *                 @OA\Property(property="created_at", type="string", format="date-time", example="2024-08-21T00:00:00.000000Z"),
+ *                 @OA\Property(property="updated_at", type="string", format="date-time", example="2024-08-21T00:00:00.000000Z"),
+ *             ),
+ *             @OA\Property(property="message", type="string", example="Barber Shop criado com sucesso"),
+ *             @OA\Property(property="status", type="integer", example=200)
+ *         )
+ *     )
+ * )
+ */
+
     public function store(Request $request)
     {
         $request->validate([
@@ -31,6 +68,49 @@ class ArturBarberShopController extends Controller
             'status' => 200,
         ]);
     }
+
+/**
+ * @OA\Put(
+ *     path="api/artur/barberShop/{id}",
+ *     operationId="updateBarberShop",
+ *     tags={"Artur"},
+ *     summary="Atualiza as informações de um Barber Shop existente",
+ *     @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         description="ID do Barber Shop",
+ *         required=true,
+ *         @OA\Schema(type="integer")
+ *     ),
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             required={"name","descripition","advantages","contact"},
+ *             @OA\Property(property="name", type="string", example="Barber Shop Atualizado"),
+ *             @OA\Property(property="descripition", type="string", example="Descrição atualizada"),
+ *             @OA\Property(property="advantages", type="string", example="Novas vantagens"),
+ *             @OA\Property(property="contact", type="string", example="9876-5432"),
+ *         ),
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Barber Shop atualizado com sucesso",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="barberShop", type="object",
+ *                 @OA\Property(property="id", type="integer", example=1),
+ *                 @OA\Property(property="name", type="string", example="Barber Shop Atualizado"),
+ *                 @OA\Property(property="descripition", type="string", example="Descrição atualizada"),
+ *                 @OA\Property(property="advantages", type="string", example="Novas vantagens"),
+ *                 @OA\Property(property="contact", type="string", example="9876-5432"),
+ *                 @OA\Property(property="created_at", type="string", format="date-time", example="2024-08-21T00:00:00.000000Z"),
+ *                 @OA\Property(property="updated_at", type="string", format="date-time", example="2024-08-21T00:00:00.000000Z"),
+ *             ),
+ *             @OA\Property(property="message", type="string", example="Barber Shop atualizado com sucesso"),
+ *             @OA\Property(property="status", type="integer", example=200)
+ *         )
+ *     )
+ * )
+ */
 
     public function update(Request $request, $id)
     {
@@ -63,6 +143,30 @@ class ArturBarberShopController extends Controller
         ]);
     }
 
+/**
+ * @OA\Delete(
+ *     path="api/artur/barberShop/{id}",
+ *     operationId="deleteBarberShop",
+ *     tags={"Artur"},
+ *     summary="Remove um Barber Shop existente",
+ *     @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         description="ID do Barber Shop",
+ *         required=true,
+ *         @OA\Schema(type="integer")
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Barber Shop deletado com sucesso",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="message", type="string", example="Barber Shop deletado com sucesso"),
+ *             @OA\Property(property="status", type="integer", example=200)
+ *         )
+ *     )
+ * )
+ */
+
     public function destroy($id)
     {
         $barberShop = ArturBarberShop::find($id);
@@ -81,6 +185,48 @@ class ArturBarberShopController extends Controller
             'status' => 200,
         ]);
     }
+
+/**
+ * @OA\Get(
+ *     path="api/artur/barberShop/{id}",
+ *     operationId="getBarberShop",
+ *     tags={"Artur"},
+ *     summary="Exibe as informações de um Barber Shop específico",
+ *     @OA\Parameter(
+ *         name="id",
+ *         in="path",
+ *         description="ID do Barber Shop",
+ *         required=true,
+ *         @OA\Schema(type="integer")
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Detalhes do Barber Shop",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="barberShop", type="object",
+ *                 @OA\Property(property="id", type="integer", example=1),
+ *                 @OA\Property(property="name", type="string", example="Barber Shop A"),
+ *                 @OA\Property(property="descripition", type="string", example="Melhor Barber Shop da cidade"),
+ *                 @OA\Property(property="advantages", type="string", example="Preços acessíveis, ambiente agradável"),
+ *                 @OA\Property(property="contact", type="string", example="1234-5678"),
+ *                 @OA\Property(property="created_at", type="string", format="date-time", example="2024-08-21T00:00:00.000000Z"),
+ *                 @OA\Property(property="updated_at", type="string", format="date-time", example="2024-08-21T00:00:00.000000Z"),
+ *             ),
+ *             @OA\Property(property="products", type="array",
+ *                 @OA\Items(
+ *                     @OA\Property(property="id", type="integer", example=1),
+ *                     @OA\Property(property="name", type="string", example="Produto A"),
+ *                     @OA\Property(property="price", type="number", format="float", example=29.99),
+ *                     @OA\Property(property="barber_shop_id", type="integer", example=1),
+ *                     @OA\Property(property="created_at", type="string", format="date-time", example="2024-08-21T00:00:00.000000Z"),
+ *                     @OA\Property(property="updated_at", type="string", format="date-time", example="2024-08-21T00:00:00.000000Z"),
+ *                 )
+ *             ),
+ *             @OA\Property(property="status", type="integer", example=200)
+ *         )
+ *     )
+ * )
+ */
 
     public function show($id)
     {

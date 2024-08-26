@@ -5,6 +5,1331 @@
         "version": "1.0"
     },
     "paths": {
+        "api/artur/barberShop": {
+            "post": {
+                "tags": [
+                    "Artur"
+                ],
+                "summary": "Cria um novo Barber Shop",
+                "operationId": "createBarberShop",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "descripition",
+                                    "advantages",
+                                    "contact"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Barber Shop A"
+                                    },
+                                    "descripition": {
+                                        "type": "string",
+                                        "example": "Melhor Barber Shop da cidade"
+                                    },
+                                    "advantages": {
+                                        "type": "string",
+                                        "example": "Preços acessíveis, ambiente agradável"
+                                    },
+                                    "contact": {
+                                        "type": "string",
+                                        "example": "1234-5678"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Barber Shop criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "barberShop": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Barber Shop A"
+                                                },
+                                                "descripition": {
+                                                    "type": "string",
+                                                    "example": "Melhor Barber Shop da cidade"
+                                                },
+                                                "advantages": {
+                                                    "type": "string",
+                                                    "example": "Preços acessíveis, ambiente agradável"
+                                                },
+                                                "contact": {
+                                                    "type": "string",
+                                                    "example": "1234-5678"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-08-21T00:00:00.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-08-21T00:00:00.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Barber Shop criado com sucesso"
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/artur/barberShop/{id}": {
+            "get": {
+                "tags": [
+                    "Artur"
+                ],
+                "summary": "Exibe as informações de um Barber Shop específico",
+                "operationId": "getBarberShop",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do Barber Shop",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalhes do Barber Shop",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "barberShop": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Barber Shop A"
+                                                },
+                                                "descripition": {
+                                                    "type": "string",
+                                                    "example": "Melhor Barber Shop da cidade"
+                                                },
+                                                "advantages": {
+                                                    "type": "string",
+                                                    "example": "Preços acessíveis, ambiente agradável"
+                                                },
+                                                "contact": {
+                                                    "type": "string",
+                                                    "example": "1234-5678"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-08-21T00:00:00.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-08-21T00:00:00.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "products": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Produto A"
+                                                    },
+                                                    "price": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": 29.99
+                                                    },
+                                                    "barber_shop_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2024-08-21T00:00:00.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2024-08-21T00:00:00.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Artur"
+                ],
+                "summary": "Atualiza as informações de um Barber Shop existente",
+                "operationId": "updateBarberShop",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do Barber Shop",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "descripition",
+                                    "advantages",
+                                    "contact"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Barber Shop Atualizado"
+                                    },
+                                    "descripition": {
+                                        "type": "string",
+                                        "example": "Descrição atualizada"
+                                    },
+                                    "advantages": {
+                                        "type": "string",
+                                        "example": "Novas vantagens"
+                                    },
+                                    "contact": {
+                                        "type": "string",
+                                        "example": "9876-5432"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Barber Shop atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "barberShop": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Barber Shop Atualizado"
+                                                },
+                                                "descripition": {
+                                                    "type": "string",
+                                                    "example": "Descrição atualizada"
+                                                },
+                                                "advantages": {
+                                                    "type": "string",
+                                                    "example": "Novas vantagens"
+                                                },
+                                                "contact": {
+                                                    "type": "string",
+                                                    "example": "9876-5432"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-08-21T00:00:00.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-08-21T00:00:00.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Barber Shop atualizado com sucesso"
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Artur"
+                ],
+                "summary": "Remove um Barber Shop existente",
+                "operationId": "deleteBarberShop",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do Barber Shop",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Barber Shop deletado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Barber Shop deletado com sucesso"
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/artur/product": {
+            "post": {
+                "tags": [
+                    "Artur"
+                ],
+                "summary": "Cria um novo produto para um Barber Shop",
+                "operationId": "createProduct",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "price",
+                                    "barber_shop_id"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Produto A"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 29.99
+                                    },
+                                    "barber_shop_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Produto criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "product": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Produto A"
+                                                },
+                                                "price": {
+                                                    "type": "number",
+                                                    "format": "float",
+                                                    "example": 29.99
+                                                },
+                                                "barber_shop_id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-08-21T00:00:00.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-08-21T00:00:00.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Produto criado com sucesso"
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/artur/product/{id}": {
+            "put": {
+                "tags": [
+                    "Artur"
+                ],
+                "summary": "Atualiza as informações de um produto existente",
+                "operationId": "updateProduct",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do produto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "price",
+                                    "barber_shop_id"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Produto Atualizado"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 39.99
+                                    },
+                                    "barber_shop_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Produto atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "product": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Produto Atualizado"
+                                                },
+                                                "price": {
+                                                    "type": "number",
+                                                    "format": "float",
+                                                    "example": 39.99
+                                                },
+                                                "barber_shop_id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-08-21T00:00:00.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-08-21T00:00:00.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Produto atualizado com sucesso"
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Artur"
+                ],
+                "summary": "Remove um produto existente",
+                "operationId": "deleteProduct",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do produto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Produto deletado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Produto deletado com sucesso"
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/artur/user": {
+            "post": {
+                "tags": [
+                    "Artur"
+                ],
+                "summary": "Cria um novo usuário",
+                "operationId": "createUser",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Artur"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "artur@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "123456"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuário criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Artur"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "artur@example.com"
+                                        },
+                                        "password": {
+                                            "type": "string",
+                                            "example": "$2y$10$..."
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2024-08-21T00:00:00.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2024-08-21T00:00:00.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/artur/user/{id}": {
+            "get": {
+                "tags": [
+                    "Artur"
+                ],
+                "summary": "Exibe as informações de um usuário específico",
+                "operationId": "getUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalhes do usuário",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "user": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Artur"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "artur@example.com"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-08-21T00:00:00.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-08-21T00:00:00.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Artur"
+                ],
+                "summary": "Atualiza as informações de um usuário existente",
+                "operationId": "updateUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Artur Atualizado"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "artur.updated@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "123456"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuário atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "user": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Artur Atualizado"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "artur.updated@example.com"
+                                                },
+                                                "password": {
+                                                    "type": "string",
+                                                    "example": "$2y$10$..."
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-08-21T00:00:00.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-08-21T00:00:00.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Usuário atualizado com sucesso"
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Artur"
+                ],
+                "summary": "Remove um usuário existente",
+                "operationId": "deleteUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuário deletado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Usuário deletado com sucesso"
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/du/training": {
+            "post": {
+                "tags": [
+                    "Lucas Du"
+                ],
+                "summary": "Criar um novo treino",
+                "description": "Cria um novo treino para um usuário.",
+                "operationId": "2550d66227427d9d0d96de90404c115e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "type",
+                                    "weight",
+                                    "repetitions",
+                                    "time",
+                                    "du_user_id"
+                                ],
+                                "properties": {
+                                    "type": {
+                                        "type": "string",
+                                        "example": "Musculação"
+                                    },
+                                    "weight": {
+                                        "type": "string",
+                                        "example": "50kg"
+                                    },
+                                    "repetitions": {
+                                        "type": "string",
+                                        "example": "3x12"
+                                    },
+                                    "time": {
+                                        "type": "string",
+                                        "example": "45 minutos"
+                                    },
+                                    "du_user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Treino criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "training": {
+                                            "$ref": "schemas/DuTraining"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Treino criado com sucesso"
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dados inválidos"
+                    }
+                }
+            }
+        },
+        "api/du/training/{id}": {
+            "put": {
+                "tags": [
+                    "Lucas Du"
+                ],
+                "summary": "Atualizar um treino existente",
+                "description": "Atualiza as informações de um treino existente.",
+                "operationId": "dd87208c6babfced09d169eeb1e0ac51",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do treino",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "type",
+                                    "weight",
+                                    "repetitions",
+                                    "time",
+                                    "du_user_id"
+                                ],
+                                "properties": {
+                                    "type": {
+                                        "type": "string",
+                                        "example": "Musculação"
+                                    },
+                                    "weight": {
+                                        "type": "string",
+                                        "example": "55kg"
+                                    },
+                                    "repetitions": {
+                                        "type": "string",
+                                        "example": "3x10"
+                                    },
+                                    "time": {
+                                        "type": "string",
+                                        "example": "50 minutos"
+                                    },
+                                    "du_user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Treino atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "training": {
+                                            "$ref": "schemas/DuTraining"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Treino atualizado com sucesso"
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Treino não encontrado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Lucas Du"
+                ],
+                "summary": "Deletar um treino",
+                "description": "Deleta um treino existente.",
+                "operationId": "74c39dcfbcae9da9ce6d04bb5554a7ec",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do treino",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Treino deletado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Treino deletado com sucesso"
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Treino não encontrado"
+                    }
+                }
+            }
+        },
+        "api/du/user": {
+            "post": {
+                "tags": [
+                    "Lucas Du"
+                ],
+                "summary": "Criar um novo usuário",
+                "description": "Cria um novo usuário e retorna os detalhes do usuário criado.",
+                "operationId": "1831d05712ef57359df128210738932f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "John Doe"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "johndoe@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "password123"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuário criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "user": {
+                                            "$ref": "schemas/DuUser"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Usuário criado com sucesso"
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dados inválidos"
+                    }
+                }
+            }
+        },
+        "api/du/user/{id}": {
+            "get": {
+                "tags": [
+                    "Lucas Du"
+                ],
+                "summary": "Exibir detalhes de um usuário",
+                "description": "Retorna os detalhes de um usuário específico, junto com seus treinos associados.",
+                "operationId": "30b98d13e24dba1d5cc9f0aabaf1d042",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuário encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "user": {
+                                            "$ref": "schemas/DuUser"
+                                        },
+                                        "trainings": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "schemas/DuTraining"
+                                            }
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Lucas Du"
+                ],
+                "summary": "Atualizar um usuário existente",
+                "description": "Atualiza as informações de um usuário existente.",
+                "operationId": "136785c12143cf359cdb6f610aefa70a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "John Doe"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "johndoe@example.com"
+                                    },
+                                    "password": {
+                                        "description": "Senha nova, opcional",
+                                        "type": "string",
+                                        "example": "newpassword123"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuário atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "schemas/DuUser"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Usuário atualizado com sucesso"
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Lucas Du"
+                ],
+                "summary": "Deletar um usuário",
+                "description": "Deleta um usuário existente.",
+                "operationId": "d08319417fe3a666fb97fc5aef61118e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuário deletado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Usuário deletado com sucesso"
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 200
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado"
+                    }
+                }
+            }
+        },
         "/api/identities": {
             "get": {
                 "tags": [
@@ -43,14 +1368,14 @@
                 }
             }
         },
-        "/paulo/creditCard": {
+        "api/paulo/creditCard": {
             "post": {
                 "tags": [
                     "Paulo"
                 ],
                 "summary": "Criar um novo cartão de crédito",
                 "description": "Cria um novo cartão de crédito para um usuário",
-                "operationId": "9f11073cb9e9b020f7440e905214a50f",
+                "operationId": "f722f4c68bb4fd36e01a3bbf1aee17ec",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -107,14 +1432,14 @@
                 }
             }
         },
-        "/paulo/creditCard/{id}": {
+        "api/paulo/creditCard/{id}": {
             "put": {
                 "tags": [
                     "Paulo"
                 ],
                 "summary": "Atualizar cartão de crédito",
                 "description": "Atualiza as informações de um cartão de crédito existente",
-                "operationId": "b2826601d66cccf70320d836dcf2aa41",
+                "operationId": "9faee5238b20bf15cbff7a77c5e48002",
                 "parameters": [
                     {
                         "name": "id",
@@ -190,7 +1515,7 @@
                 ],
                 "summary": "Deletar cartão de crédito",
                 "description": "Deleta um cartão de crédito existente",
-                "operationId": "9baceabb684e3cb7fe7dbf646f8374b3",
+                "operationId": "2416fc75b86b8533bf76774328b6748e",
                 "parameters": [
                     {
                         "name": "id",
@@ -212,14 +1537,14 @@
                 }
             }
         },
-        "/paulo/user": {
+        "api/paulo/user": {
             "post": {
                 "tags": [
                     "Paulo"
                 ],
                 "summary": "Criar um novo usuário",
                 "description": "Cria um novo usuário com as informações fornecidas",
-                "operationId": "5baa630badfee5083b5229ca7e872ca3",
+                "operationId": "d8821c9c03af24eb9cd8f9004e5e9075",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -278,14 +1603,14 @@
                 }
             }
         },
-        "/paulo/user/{id}": {
+        "api/paulo/user/{id}": {
             "get": {
                 "tags": [
                     "Paulo"
                 ],
                 "summary": "Buscar usuário por ID",
                 "description": "Retorna os detalhes de um usuário e seus cartões de crédito",
-                "operationId": "1b5acdc6d3bdc3c9cd48b25633dd2fff",
+                "operationId": "27751b7de8f4d4720d792b981639a5dd",
                 "parameters": [
                     {
                         "name": "id",
@@ -319,7 +1644,7 @@
                 ],
                 "summary": "Atualizar usuário",
                 "description": "Atualiza as informações de um usuário existente",
-                "operationId": "2f741c448cefc85b2b76ed5386e9e884",
+                "operationId": "d05e772b9d9c2c1a6f304239828c2cd8",
                 "parameters": [
                     {
                         "name": "id",
@@ -397,7 +1722,7 @@
                 ],
                 "summary": "Deletar usuário",
                 "description": "Deleta um usuário existente e seus cartões de crédito",
-                "operationId": "7683c0b3b744395a74274999d0e91845",
+                "operationId": "e5bceaadcf6932a2889728e7df076a46",
                 "parameters": [
                     {
                         "name": "id",
@@ -422,6 +1747,50 @@
     },
     "components": {
         "schemas": {
+            "DuTraining": {
+                "required": [
+                    "type",
+                    "weight",
+                    "repetitions",
+                    "time",
+                    "du_user_id"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "type": {
+                        "type": "string",
+                        "example": "Musculação"
+                    },
+                    "weight": {
+                        "type": "string",
+                        "example": "50kg"
+                    },
+                    "repetitions": {
+                        "type": "string",
+                        "example": "3x12"
+                    },
+                    "time": {
+                        "type": "string",
+                        "example": "45 minutos"
+                    },
+                    "du_user_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
             "PauloUser": {
                 "title": "Usuário Paulo",
                 "required": [
@@ -543,6 +1912,14 @@
         }
     },
     "tags": [
+        {
+            "name": "Artur",
+            "description": "Artur"
+        },
+        {
+            "name": "Lucas Du",
+            "description": "Lucas Du"
+        },
         {
             "name": "Identity",
             "description": "Identity"

@@ -6,60 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\PauloCreditCard;
 use Illuminate\Http\Request;
 
-/**
- * @OA\Schema(
- *     schema="PauloUser",
- *     type="object",
- *     title="Usuário Paulo",
- *     required={"name", "email", "phone_number", "birth_date", "password"},
- *     @OA\Property(property="id", type="integer", description="ID do usuário"),
- *     @OA\Property(property="name", type="string", description="Nome do usuário"),
- *     @OA\Property(property="email", type="string", format="email", description="Email do usuário"),
- *     @OA\Property(property="phone_number", type="string", description="Número de telefone do usuário"),
- *     @OA\Property(property="birth_date", type="string", format="date", description="Data de nascimento do usuário"),
- *     @OA\Property(property="balance", type="number", format="double", description="Saldo do usuário", example=0.00),
- *     @OA\Property(property="created_at", type="string", format="date-time", description="Data de criação"),
- *     @OA\Property(property="updated_at", type="string", format="date-time", description="Data de atualização")
- * )
- *
- * @OA\Schema(
- *     schema="PauloCreditCard",
- *     type="object",
- *     title="Cartão de Crédito Paulo",
- *     required={"name", "number", "brand", "is_credit", "user_id"},
- *     @OA\Property(property="id", type="integer", description="ID do cartão de crédito"),
- *     @OA\Property(property="name", type="string", description="Nome do cartão de crédito"),
- *     @OA\Property(property="number", type="string", description="Número do cartão de crédito"),
- *     @OA\Property(property="brand", type="string", description="Bandeira do cartão"),
- *     @OA\Property(property="is_credit", type="boolean", description="Indica se é um cartão de crédito"),
- *     @OA\Property(property="user_id", type="integer", description="ID do usuário associado"),
- *     @OA\Property(property="created_at", type="string", format="date-time", description="Data de criação"),
- *     @OA\Property(property="updated_at", type="string", format="date-time", description="Data de atualização")
- * )
- *
- * @OA\Schema(
- *     schema="PauloUserWithCards",
- *     type="object",
- *     title="Usuário Paulo com Cartões",
- *     allOf={
- *         @OA\Schema(ref="schemas/PauloUser"),
- *         @OA\Schema(
- *             @OA\Property(
- *                 property="credit_cards",
- *                 type="array",
- *                 @OA\Items(ref="schemas/PauloCreditCard")
- *             )
- *         )
- *     }
- * )
- */
 
 class PauloCreditCardController extends Controller
 {
 
 /**
  * @OA\Post(
- *     path="/paulo/creditCard",
+ *     path="api/paulo/creditCard",
  *     summary="Criar um novo cartão de crédito",
  *     description="Cria um novo cartão de crédito para um usuário",
  *     tags={"Paulo"},
@@ -111,7 +64,7 @@ class PauloCreditCardController extends Controller
 
 /**
  * @OA\Put(
- *     path="/paulo/creditCard/{id}",
+ *     path="api/paulo/creditCard/{id}",
  *     summary="Atualizar cartão de crédito",
  *     description="Atualiza as informações de um cartão de crédito existente",
  *     tags={"Paulo"},
@@ -174,7 +127,7 @@ class PauloCreditCardController extends Controller
 
 /**
  * @OA\Delete(
- *     path="/paulo/creditCard/{id}",
+ *     path="api/paulo/creditCard/{id}",
  *     summary="Deletar cartão de crédito",
  *     description="Deleta um cartão de crédito existente",
  *     tags={"Paulo"},

@@ -8,11 +8,59 @@ use App\Models\PauloUser;
 use Hash;
 use Illuminate\Http\Request;
 
+
+/**
+ * @OA\Schema(
+ *     schema="PauloUser",
+ *     type="object",
+ *     title="Usuário Paulo",
+ *     required={"name", "email", "phone_number", "birth_date", "password"},
+ *     @OA\Property(property="id", type="integer", description="ID do usuário"),
+ *     @OA\Property(property="name", type="string", description="Nome do usuário"),
+ *     @OA\Property(property="email", type="string", format="email", description="Email do usuário"),
+ *     @OA\Property(property="phone_number", type="string", description="Número de telefone do usuário"),
+ *     @OA\Property(property="birth_date", type="string", format="date", description="Data de nascimento do usuário"),
+ *     @OA\Property(property="balance", type="number", format="double", description="Saldo do usuário", example=0.00),
+ *     @OA\Property(property="created_at", type="string", format="date-time", description="Data de criação"),
+ *     @OA\Property(property="updated_at", type="string", format="date-time", description="Data de atualização")
+ * )
+ *
+ * @OA\Schema(
+ *     schema="PauloCreditCard",
+ *     type="object",
+ *     title="Cartão de Crédito Paulo",
+ *     required={"name", "number", "brand", "is_credit", "user_id"},
+ *     @OA\Property(property="id", type="integer", description="ID do cartão de crédito"),
+ *     @OA\Property(property="name", type="string", description="Nome do cartão de crédito"),
+ *     @OA\Property(property="number", type="string", description="Número do cartão de crédito"),
+ *     @OA\Property(property="brand", type="string", description="Bandeira do cartão"),
+ *     @OA\Property(property="is_credit", type="boolean", description="Indica se é um cartão de crédito"),
+ *     @OA\Property(property="user_id", type="integer", description="ID do usuário associado"),
+ *     @OA\Property(property="created_at", type="string", format="date-time", description="Data de criação"),
+ *     @OA\Property(property="updated_at", type="string", format="date-time", description="Data de atualização")
+ * )
+ *
+ * @OA\Schema(
+ *     schema="PauloUserWithCards",
+ *     type="object",
+ *     title="Usuário Paulo com Cartões",
+ *     allOf={
+ *         @OA\Schema(ref="schemas/PauloUser"),
+ *         @OA\Schema(
+ *             @OA\Property(
+ *                 property="credit_cards",
+ *                 type="array",
+ *                 @OA\Items(ref="schemas/PauloCreditCard")
+ *             )
+ *         )
+ *     }
+ * )
+ */
 class PauloUserController extends Controller
 {
 /**
  * @OA\Post(
- *     path="/paulo/user",
+ *     path="api/paulo/user",
  *     summary="Criar um novo usuário",
  *     description="Cria um novo usuário com as informações fornecidas",
  *     tags={"Paulo"},
@@ -64,7 +112,7 @@ class PauloUserController extends Controller
 
 /**
  * @OA\Get(
- *     path="/paulo/user/{id}",
+ *     path="api/paulo/user/{id}",
  *     summary="Buscar usuário por ID",
  *     description="Retorna os detalhes de um usuário e seus cartões de crédito",
  *     tags={"Paulo"},
@@ -108,7 +156,7 @@ class PauloUserController extends Controller
 
 /**
  * @OA\Put(
- *     path="/paulo/user/{id}",
+ *     path="api/paulo/user/{id}",
  *     summary="Atualizar usuário",
  *     description="Atualiza as informações de um usuário existente",
  *     tags={"Paulo"},
@@ -171,7 +219,7 @@ class PauloUserController extends Controller
 
 /**
  * @OA\Delete(
- *     path="/paulo/user/{id}",
+ *     path="api/paulo/user/{id}",
  *     summary="Deletar usuário",
  *     description="Deleta um usuário existente e seus cartões de crédito",
  *     tags={"Paulo"},
