@@ -101,6 +101,8 @@ class PauloUserController extends Controller
         $pauloUser->phone_number = $request->phone_number;
         $pauloUser->birth_date = $request->birth_date;
         $pauloUser->password = Hash::make($request->password);
+        if($request->balence)
+            $pauloUser->balence = $request->balence;
         $pauloUser->save();
 
         return response()->json([
@@ -208,6 +210,8 @@ class PauloUserController extends Controller
         $pauloUser->birth_date = $request->birth_date;
         if($request->password)
             $pauloUser->password = Hash::make($request->password);
+        if($request->balence)
+            $pauloUser->balence = $request->balence;
         $pauloUser->save();
 
         return response()->json([
